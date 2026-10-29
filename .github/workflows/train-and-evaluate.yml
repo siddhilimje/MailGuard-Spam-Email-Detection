@@ -1,0 +1,66 @@
+name: ML Pipeline - Train, Evaluate & Quality Gate
+
+on:
+  workflow_dispatch:
+    inputs:
+      force_promote:
+        description: 'Force promotion even if non-critical gate rules trigger'
+        required: false
+        default: false
+        type: boolean
+  push:
+    paths:
+      - 'data/raw/**'
+      - 'params.yaml'
+      - 'dvc.yaml'
+      - 'src/ingestion.py'
+      - 'src/preprocess.py'
+      - 'src/train.py'
+      - 'src/evaluate.py'
+
+concurrency:
+  group: ml-pipeline-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  train-and-evaluate:
+    name: Execute ML Pipeline & Quality Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
+
+      - name: Install Pipeline Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Data Preprocessing & Stratified Splitting
+        run: |
+          python src/preprocess.py
+
+      - name: Train Models & Log to MLflow
+        run: |
+          python src/train.py
+
+      - name: Evaluate on Unseen Test Split & Enforce Quality Gate
+        run: |
+          python src/evaluate.py
+
+      - name: Upload Model Artifacts & Evaluation Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: model-evaluation-package
+          path: |
+            models/model_metadata.json
+            models/evaluation_results.json
+            reports/
+          retention-days: 14
+

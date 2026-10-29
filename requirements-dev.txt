@@ -1,0 +1,11 @@
+# Inherit core serving dependencies
+-r requirements.txt
+
+# Data & Pipeline Versioning (DVC)
+dvc>=3.50.0,<4.0.0
+
+# Code Quality & Testing Tools
+flake8>=7.0.0
+pytest>=8.0.0
+pytest-cov>=5.0.0
+

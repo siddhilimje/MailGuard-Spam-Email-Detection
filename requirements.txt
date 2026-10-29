@@ -1,0 +1,20 @@
+# Core FastAPI Serving, Inference & Monitoring Dependencies
+fastapi>=0.115.0,<1.0.0
+uvicorn[standard]>=0.30.0,<1.0.0
+pydantic>=2.7.0,<3.0.0
+
+# Machine Learning & Scientific Computing
+scikit-learn>=1.5.0,<2.0.0
+numpy>=1.26.0,<3.0.0
+pandas>=2.2.0,<4.0.0
+scipy>=1.13.0,<2.0.0
+joblib>=1.4.0,<2.0.0
+pyyaml>=6.0.0,<7.0.0
+
+# MLOps Experiment Tracking & Drift Monitoring
+mlflow>=2.15.0,<4.0.0
+evidently>=0.4.30,<1.0.0
+
+# HTTP Client for Testing & Healthchecks
+httpx>=0.27.0,<1.0.0
+

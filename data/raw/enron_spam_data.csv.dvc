@@ -1,0 +1,5 @@
+outs:
+- md5: 0a1fd0d253e11387335dbfa9fb774703
+  size: 29189648
+  hash: md5
+  path: enron_spam_data.csv

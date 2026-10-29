@@ -1,0 +1,108 @@
+{
+  "status": "WARNING_DRIFT_DETECTED",
+  "is_drift_detected": true,
+  "alert_message": "WARNING: Data drift detected! 6/7 features (85.7%) exceeded threshold (30.0%). Model retraining recommended.",
+  "timestamp": "2026-10-30 02:59:10",
+  "stream_source": "prediction_logs.jsonl",
+  "reference_dataset": "Enron-Spam Corpus (data/processed/train.csv)",
+  "reference_samples": 1000,
+  "current_samples": 144,
+  "drift_share": 0.8571,
+  "drift_share_threshold": 0.3,
+  "p_value_threshold": 0.05,
+  "drifted_features_count": 6,
+  "total_features_count": 7,
+  "features_drift_summary": "6/7",
+  "features": {
+    "char_length": {
+      "feature": "char_length",
+      "test_type": "Kolmogorov-Smirnov",
+      "p_value": 0.0,
+      "p_value_threshold": 0.05,
+      "statistic": 0.2486,
+      "is_drifted": true,
+      "ref_mean": 1340.57,
+      "curr_mean": 836.9444,
+      "ref_std": 2380.0208,
+      "curr_std": 1034.4685
+    },
+    "token_count": {
+      "feature": "token_count",
+      "test_type": "Kolmogorov-Smirnov",
+      "p_value": 0.0,
+      "p_value_threshold": 0.05,
+      "statistic": 0.2486,
+      "is_drifted": true,
+      "ref_mean": 290.809,
+      "curr_mean": 183.5486,
+      "ref_std": 502.502,
+      "curr_std": 252.7965
+    },
+    "uppercase_ratio": {
+      "feature": "uppercase_ratio",
+      "test_type": "Kolmogorov-Smirnov",
+      "p_value": 0.0,
+      "p_value_threshold": 0.05,
+      "statistic": 0.3056,
+      "is_drifted": true,
+      "ref_mean": 0.0,
+      "curr_mean": 0.0084,
+      "ref_std": 0.0,
+      "curr_std": 0.0144
+    },
+    "digit_count": {
+      "feature": "digit_count",
+      "test_type": "Kolmogorov-Smirnov",
+      "p_value": 0.001545,
+      "p_value_threshold": 0.05,
+      "statistic": 0.1669,
+      "is_drifted": true,
+      "ref_mean": 38.158,
+      "curr_mean": 25.9028,
+      "ref_std": 67.5939,
+      "curr_std": 47.129
+    },
+    "url_count": {
+      "feature": "url_count",
+      "test_type": "Kolmogorov-Smirnov",
+      "p_value": 1.0,
+      "p_value_threshold": 0.05,
+      "statistic": 0.0069,
+      "is_drifted": false,
+      "ref_mean": 0.0,
+      "curr_mean": 0.0694,
+      "ref_std": 0.0,
+      "curr_std": 0.8304
+    },
+    "currency_count": {
+      "feature": "currency_count",
+      "test_type": "Kolmogorov-Smirnov",
+      "p_value": 0.016019,
+      "p_value_threshold": 0.05,
+      "statistic": 0.1369,
+      "is_drifted": true,
+      "ref_mean": 0.03,
+      "curr_mean": 0.8264,
+      "ref_std": 0.2951,
+      "curr_std": 2.1484
+    },
+    "spam_probability": {
+      "feature": "spam_probability",
+      "test_type": "Kolmogorov-Smirnov",
+      "p_value": 0.0,
+      "p_value_threshold": 0.05,
+      "statistic": 0.654,
+      "is_drifted": true,
+      "ref_mean": 0.2898,
+      "curr_mean": 0.3912,
+      "ref_std": 0.4436,
+      "curr_std": 0.4366
+    }
+  },
+  "prediction_distribution": {
+    "reference_spam_ratio_percent": 28.8,
+    "current_spam_ratio_percent": 38.19,
+    "distribution_delta_percent": 9.39
+  },
+  "conceptual_distinction": "Data Drift evaluates P(X), the input feature distribution over time without needing labels. Model Performance Degradation evaluates P(Y|X), such as drop in F1-score or Accuracy. Because ground-truth labels (Y) are not available in real-time production inference, true model accuracy cannot be calculated without human review / feedback verification."
+}

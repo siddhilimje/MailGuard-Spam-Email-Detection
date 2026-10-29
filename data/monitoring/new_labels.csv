@@ -1,0 +1,51 @@
+id,text,label,source,verified_at
+FB-LABEL-001,Security Notice: Please review your multi-factor credentials on internal portal. (Ref batch #1),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-002,IT Support: Scheduled server maintenance window this Saturday midnight. (Ref batch #1),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-003,Monthly budget variance report for regional sales divisions. (Ref batch #1),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-004,Your mailbox quota has exceeded 99%. Re-verify login password immediately. (Ref batch #1),1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-005,IT Support: Scheduled server maintenance window this Saturday midnight. (Ref batch #1),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-006,Monthly budget variance report for regional sales divisions. (Ref batch #2),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-007,Security Notice: Please review your multi-factor credentials on internal portal. (Ref batch #2),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-008,Your mailbox quota has exceeded 99%. Re-verify login password immediately. (Ref batch #2),1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-009,Wire transfer confirmation pending: verify your banking pin number now. (Ref batch #2),1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-010,Wire transfer confirmation pending: verify your banking pin number now. (Ref batch #2),1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-011,"URGENT: Claim $10,000 gift card reward before midnight! Click here. (Ref batch #3)",1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-012,"URGENT: Claim $10,000 gift card reward before midnight! Click here. (Ref batch #3)",1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-013,Security Notice: Please review your multi-factor credentials on internal portal. (Ref batch #3),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-014,Team calendar invitation: Machine Learning pipeline retrospective. (Ref batch #3),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-015,Team calendar invitation: Machine Learning pipeline retrospective. (Ref batch #3),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-016,"URGENT: Claim $10,000 gift card reward before midnight! Click here. (Ref batch #4)",1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-017,Wire transfer confirmation pending: verify your banking pin number now. (Ref batch #4),1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-018,"URGENT: Claim $10,000 gift card reward before midnight! Click here. (Ref batch #4)",1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-019,Vendor contract renewal agreement document ready for signature. (Ref batch #4),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-020,Team calendar invitation: Machine Learning pipeline retrospective. (Ref batch #4),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-021,Security Notice: Please review your multi-factor credentials on internal portal. (Ref batch #5),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-022,Your mailbox quota has exceeded 99%. Re-verify login password immediately. (Ref batch #5),1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-023,Monthly budget variance report for regional sales divisions. (Ref batch #5),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-024,"Work from home and earn $8,000 weekly with no experience needed! (Ref batch #5)",1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-025,Your mailbox quota has exceeded 99%. Re-verify login password immediately. (Ref batch #5),1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-026,Monthly budget variance report for regional sales divisions. (Ref batch #6),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-027,Security Notice: Please review your multi-factor credentials on internal portal. (Ref batch #6),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-028,"URGENT: Claim $10,000 gift card reward before midnight! Click here. (Ref batch #6)",1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-029,"Congratulations! You won the grand sweepstakes cash prize of $50,000. (Ref batch #6)",1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-030,Monthly budget variance report for regional sales divisions. (Ref batch #6),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-031,Security Notice: Please review your multi-factor credentials on internal portal. (Ref batch #7),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-032,Monthly budget variance report for regional sales divisions. (Ref batch #7),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-033,Team calendar invitation: Machine Learning pipeline retrospective. (Ref batch #7),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-034,Team calendar invitation: Machine Learning pipeline retrospective. (Ref batch #7),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-035,Security Notice: Please review your multi-factor credentials on internal portal. (Ref batch #7),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-036,IT Support: Scheduled server maintenance window this Saturday midnight. (Ref batch #8),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-037,Your mailbox quota has exceeded 99%. Re-verify login password immediately. (Ref batch #8),1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-038,"Work from home and earn $8,000 weekly with no experience needed! (Ref batch #8)",1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-039,"Congratulations! You won the grand sweepstakes cash prize of $50,000. (Ref batch #8)",1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-040,IT Support: Scheduled server maintenance window this Saturday midnight. (Ref batch #8),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-041,"Congratulations! You won the grand sweepstakes cash prize of $50,000. (Ref batch #9)",1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-042,Security Notice: Please review your multi-factor credentials on internal portal. (Ref batch #9),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-043,IT Support: Scheduled server maintenance window this Saturday midnight. (Ref batch #9),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-044,"URGENT: Claim $10,000 gift card reward before midnight! Click here. (Ref batch #9)",1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-045,Wire transfer confirmation pending: verify your banking pin number now. (Ref batch #9),1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-046,"Congratulations! You won the grand sweepstakes cash prize of $50,000. (Ref batch #10)",1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-047,Vendor contract renewal agreement document ready for signature. (Ref batch #10),0,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-048,"Work from home and earn $8,000 weekly with no experience needed! (Ref batch #10)",1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-049,Wire transfer confirmation pending: verify your banking pin number now. (Ref batch #10),1,human_review_queue,2026-10-29 23:30:05
+FB-LABEL-050,"Work from home and earn $8,000 weekly with no experience needed! (Ref batch #10)",1,human_review_queue,2026-10-29 23:30:05

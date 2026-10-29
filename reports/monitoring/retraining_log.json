@@ -1,0 +1,30 @@
+{
+  "status": "PROMOTED",
+  "gate_passed": true,
+  "candidate_version": "v3.11.0-retrained",
+  "active_production_version": "v3.11.0-retrained",
+  "reasons": [
+    "All validation criteria and non-regression checks satisfied."
+  ],
+  "new_samples_added": 39,
+  "total_training_samples": 7414,
+  "metrics": {
+    "accuracy": 98.54,
+    "precision": 96.46,
+    "recall": 98.42,
+    "f1_score": 97.43,
+    "false_positive_rate": 1.407,
+    "true_negatives": 1121,
+    "false_positives": 16,
+    "false_negatives": 7,
+    "true_positives": 436
+  },
+  "quality_gate_thresholds": {
+    "min_f1_score": 90.0,
+    "min_accuracy": 90.0,
+    "min_spam_precision": 88.0,
+    "max_false_positive_rate_percent": 3.0,
+    "champion_f1_score": 97.43
+  },
+  "retrained_at": "2026-10-30 03:04:31"
+}

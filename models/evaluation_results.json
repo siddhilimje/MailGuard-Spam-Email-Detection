@@ -1,0 +1,44 @@
+{
+  "evaluation_dataset": "Enron-Spam Held-out Test Split",
+  "test_samples": 1581,
+  "quality_gate": {
+    "status": "PASSED",
+    "checks": {
+      "F1-Score": {
+        "passed": true,
+        "detail": "96.6% >= 90.0%"
+      },
+      "Accuracy": {
+        "passed": true,
+        "detail": "98.1% >= 90.0%"
+      },
+      "Spam Precision": {
+        "passed": true,
+        "detail": "97.26% >= 88.0%"
+      },
+      "False Positive Rate": {
+        "passed": true,
+        "detail": "1.055% <= 3.0%"
+      }
+    }
+  },
+  "overall_accuracy": 98.1,
+  "roc_auc": 99.77,
+  "spam_class_metrics": {
+    "precision": 97.26,
+    "recall": 95.95,
+    "f1_score": 96.6
+  },
+  "confusion_matrix": {
+    "true_negatives": 1125,
+    "false_positives": 12,
+    "false_negatives": 18,
+    "true_positives": 426
+  },
+  "error_rates": {
+    "false_positive_rate_percent": 1.055,
+    "false_negative_rate_percent": 4.054
+  },
+  "model_version": "v3.8.2",
+  "evaluated_at": "2026-10-30 02:20:39"
+}

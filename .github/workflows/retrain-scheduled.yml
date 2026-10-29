@@ -1,0 +1,66 @@
+name: Scheduled & Active Learning Retraining Pipeline
+
+on:
+  schedule:
+    # Run weekly every Sunday at 02:00 UTC
+    - cron: '0 2 * * 0'
+  workflow_dispatch:
+    inputs:
+      force_promote:
+        description: 'Force promotion regardless of quality gate non-regression check'
+        required: false
+        default: false
+        type: boolean
+
+concurrency:
+  group: model-retraining-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  retrain-and-gate:
+    name: Retrain on Feedback & Enforce Quality Gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: requirements.txt
+
+      - name: Install Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Execute Automated Retraining Workflow
+        run: |
+          python src/retrain.py ${{ github.event.inputs.force_promote == 'true' && '--force' || '' }}
+
+      - name: Verify Quality Gate Decision
+        run: |
+          python -c "
+          import json, sys
+          with open('reports/monitoring/retraining_log.json', 'r') as f:
+              log = json.load(f)
+          status = log.get('status')
+          gate_passed = log.get('gate_passed')
+          print(f'Retraining Status: {status} (Gate Passed: {gate_passed})')
+          print(f'Active Production Version: {log.get(\"active_production_version\")}')
+          print(f'Validation F1: {log.get(\"metrics\", {}).get(\"f1_score\")}%')
+          if not gate_passed and '${{ github.event.inputs.force_promote }}' != 'true':
+              print('Notice: Candidate did not pass quality gate. Production model was safely preserved.')
+          "
+
+      - name: Upload Retraining Audit Log & Reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: retraining-audit-log
+          path: |
+            reports/monitoring/retraining_log.json
+            models/model_metadata.json
+          retention-days: 30
+

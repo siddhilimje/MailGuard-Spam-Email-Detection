@@ -1,0 +1,52 @@
+# Version Control & Metadata
+.git
+.github
+.gitignore
+.dvcignore
+.dvc/cache
+.dvc/tmp
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Frontend development dependencies
+frontend/node_modules/
+frontend/dist/
+
+# Logs & Temporary Files
+*.log
+scratch/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Secrets and environment files
+.env
+.env.*
+!.env.example
+

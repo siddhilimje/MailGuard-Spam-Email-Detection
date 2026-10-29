@@ -1,0 +1,79 @@
+services:
+  # ========================================================
+  # FastAPI Serving & Inference Layer
+  # ========================================================
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mailguard-api
+    restart: unless-stopped
+    ports:
+      - "${PORT:-8000}:8000"
+    environment:
+      - PORT=8000
+      - HOST=0.0.0.0
+      - ENVIRONMENT=${ENVIRONMENT:-production}
+      - MLFLOW_TRACKING_URI=file:///app/mlruns
+      - MLFLOW_ALLOW_FILE_STORE=true
+      - MLFLOW_EXPERIMENT_NAME=Spam_Email_Detection_System
+      - CORS_ORIGINS=http://localhost:5173,http://127.0.0.1:5173,http://localhost:3000,http://127.0.0.1:3000
+    volumes:
+      # Persistent storage for model artifacts, logs, drift reports, and MLflow runs
+      - ./models:/app/models
+      - ./data/monitoring:/app/data/monitoring
+      - ./reports/monitoring:/app/reports/monitoring
+      - ./mlruns:/app/mlruns
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    networks:
+      - mailguard-network
+
+  # ========================================================
+  # React 18 + Vite User Interface
+  # ========================================================
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: mailguard-frontend
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - mailguard-network
+
+  # ========================================================
+  # MLflow Experiment Tracking Dashboard (Optional Profile)
+  # ========================================================
+  mlflow-ui:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mailguard-mlflow-ui
+    restart: unless-stopped
+    profiles:
+      - monitoring
+      - all
+    ports:
+      - "5000:5000"
+    command: ["mlflow", "ui", "--backend-store-uri", "/app/mlruns", "--host", "0.0.0.0", "--port", "5000"]
+    volumes:
+      - ./mlruns:/app/mlruns:ro
+    depends_on:
+      backend:
+        condition: service_healthy
+    networks:
+      - mailguard-network
+
+networks:
+  mailguard-network:
+    driver: bridge
+

@@ -1,0 +1,113 @@
+schema: '2.0'
+stages:
+  prepare:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/raw/enron_spam_data.csv
+      hash: md5
+      md5: 0a1fd0d253e11387335dbfa9fb774703
+      size: 29189648
+    - path: src/preprocess.py
+      hash: md5
+      md5: 257621ca578afb867e954d11ecee836c
+      size: 4285
+    params:
+      params.yaml:
+        dataset:
+          raw_path: data/raw/enron_spam_data.csv
+          processed_dir: data/processed
+          random_seed: 42
+          test_size: 0.15
+          val_size: 0.15
+          train_size: 0.7
+    outs:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: 8fc70f124425e35da597207fb7acb008
+      size: 6276360
+    - path: data/processed/train.csv
+      hash: md5
+      md5: 63e492206ff0de4e4b22bfead1d683f4
+      size: 29681949
+    - path: data/processed/val.csv
+      hash: md5
+      md5: 553105d186380e2f6167ed5c2c54955b
+      size: 5948306
+  train:
+    cmd: python src/train.py
+    deps:
+    - path: data/processed/train.csv
+      hash: md5
+      md5: 63e492206ff0de4e4b22bfead1d683f4
+      size: 29681949
+    - path: data/processed/val.csv
+      hash: md5
+      md5: 553105d186380e2f6167ed5c2c54955b
+      size: 5948306
+    - path: src/train.py
+      hash: md5
+      md5: 7d059e615f0244ede417dca8173f3aa1
+      size: 10187
+    params:
+      params.yaml:
+        logistic_regression:
+          C: 2.0
+          max_iter: 1000
+          class_weight: balanced
+          random_state: 42
+        mlflow:
+          experiment_name: Spam_Email_Detection_System
+          tracking_uri: ./mlruns
+          registered_model_name: MailGuard_Spam_Classifier
+        naive_bayes:
+          alpha: 0.1
+        tfidf:
+          max_features: 25000
+          ngram_min: 1
+          ngram_max: 2
+          stop_words: english
+          sublinear_tf: true
+    outs:
+    - path: models/candidate_pipeline.joblib
+      hash: md5
+      md5: f8fbbfa9f29e6bac8fce51c218a59b65
+      size: 1790881
+    - path: models/model_metadata.json
+      hash: md5
+      md5: a48d57b1036e96c79db69797791d7adb
+      size: 1591
+  evaluate:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/processed/test.csv
+      hash: md5
+      md5: 8fc70f124425e35da597207fb7acb008
+      size: 6276360
+    - path: models/candidate_pipeline.joblib
+      hash: md5
+      md5: f8fbbfa9f29e6bac8fce51c218a59b65
+      size: 1790881
+    - path: src/evaluate.py
+      hash: md5
+      md5: 663eb92c671a1e357108d26d53470824
+      size: 10107
+    params:
+      params.yaml:
+        mlflow:
+          experiment_name: Spam_Email_Detection_System
+          tracking_uri: ./mlruns
+          registered_model_name: MailGuard_Spam_Classifier
+        quality_gate:
+          min_f1_score: 90.0
+          min_accuracy: 90.0
+          min_spam_precision: 88.0
+          max_false_positive_rate_percent: 3.0
+    outs:
+    - path: models/evaluation_results.json
+      hash: md5
+      md5: 6a479b6fbc6d9de2de280d37dd9fcf5e
+      size: 1026
+    - path: models/spam_pipeline.joblib
+      hash: md5
+      md5: 2c38975a4f46a7a6e09d91a0a5e8c2e4
+      size: 1790913
