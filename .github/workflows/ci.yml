@@ -71,6 +71,13 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+      - name: Install DVC
+        run: |
+          pip install dvc
+
+      - name: Reproduce ML Pipeline
+        run: |
+          dvc repro
 
       - name: Run Full Automated Test Suite (All 32 Unit & Integration Tests)
         run: |
